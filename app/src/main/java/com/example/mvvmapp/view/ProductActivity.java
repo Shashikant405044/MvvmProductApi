@@ -37,7 +37,11 @@ public class ProductActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_products_response);
         vieModel = new ViewModelProvider(this).get(ProductVieModel.class);
+
+
         ProductActivity.this.setTitle(" Shashi k Store");
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager( 2,StaggeredGridLayoutManager.VERTICAL);
+        binding.recyclerViewP.setLayoutManager(staggeredGridLayoutManager);
 
 //         if (isOnline()){
 //
@@ -72,14 +76,7 @@ public class ProductActivity extends AppCompatActivity {
                 ProductAdapter productAdapter = new ProductAdapter(ProductActivity.this,productsResponses);
                 binding.recyclerViewP.setAdapter(productAdapter);
 
-//                LinearLayoutManager linearLayoutManager =
-//                        new LinearLayoutManager(ProductActivity.this,LinearLayoutManager.VERTICAL,false);
-//
-//                 binding.recyclerViewP.setLayoutManager(linearLayoutManager);
 
-
-                StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager( 2,StaggeredGridLayoutManager.VERTICAL);
-                binding.recyclerViewP.setLayoutManager(staggeredGridLayoutManager);
 
             }
         });

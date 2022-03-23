@@ -5,15 +5,15 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
+
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.mvvmapp.R;
+import com.example.mvvmapp.databinding.ProductItemBinding;
 import com.example.mvvmapp.model.ProductsResponse;
 import com.example.mvvmapp.view.ProductDetailsActivity;
 
@@ -34,24 +34,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-     View view = LayoutInflater.from(context).inflate(R.layout.product_item,parent,false);
 
+        ProductItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.product_item, parent, false);
+        return  new MyViewHolder(binding);
 
-        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         ProductsResponse productsResponse = productsResponses.get(position);
+        holder.binding.setProductsIds(productsResponses.get(position));
 
-         String imageUrl =  productsResponse.getImage();
-         Glide.with(context).load(imageUrl).into(holder.imageView);
-         holder.title.setText(productsResponse.getTitle());
-         holder.category.setText(productsResponse.getCategory());
-      //  holder.description.setText(productsResponse.getRating().getRate());
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.binding.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -76,21 +72,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, category, description;
-        ImageView imageView;
-    CardView cardView;
+        ProductItemBinding binding;
 
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            title = itemView.findViewById(R.id.title);
-            category = itemView.findViewById(R.id.category);
-            description = itemView.findViewById(R.id.description);
-            imageView = itemView.findViewById(R.id.image_view);
-            cardView = itemView.findViewById(R.id.card_view);
-
-
-
+        public MyViewHolder(ProductItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

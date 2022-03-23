@@ -1,4 +1,4 @@
-package com.example.mvvmapp;
+package com.example.mvvmapp.constant;
 
 import com.google.gson.Gson;
 

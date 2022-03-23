@@ -4,9 +4,7 @@
 
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable
-            name="myViewBinding"
-            type="com.example.mvvmapp.viewmodel.ProductVieModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

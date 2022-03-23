@@ -1,12 +1,11 @@
 package com.example.mvvmapp.repository;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.mvvmapp.ProductApiEndPoint;
-import com.example.mvvmapp.RetrofitApi;
+import com.example.mvvmapp.interfacee.ProductApiEndPoint;
+import com.example.mvvmapp.constant.RetrofitApi;
 import com.example.mvvmapp.model.ProductsResponse;
 
 import java.util.List;

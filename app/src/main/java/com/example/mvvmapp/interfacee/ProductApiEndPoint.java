@@ -1,4 +1,4 @@
-package com.example.mvvmapp;
+package com.example.mvvmapp.interfacee;
 
 import com.example.mvvmapp.model.ProductsResponse;
 
